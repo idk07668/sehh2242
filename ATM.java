@@ -1,6 +1,5 @@
 // ATM.java
 // Represents an automated teller machine
-///11//
 public class ATM 
 {
    private boolean userAuthenticated; // whether user is authenticated
