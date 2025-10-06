@@ -90,10 +90,6 @@ public class Withdrawal extends Transaction
       int userChoice = 0; // local variable to store return value
 
       Screen screen = getScreen(); // get screen reference
-      
-      // array of amounts to correspond to menu numbers
-      int amounts[] = { 0, 100, 500, 1000 };
-
       // loop while no valid choice has been made
       while ( userChoice == 0 )
       {
@@ -106,14 +102,17 @@ public class Withdrawal extends Transaction
          screen.displayMessage( "\nChoose a withdrawal amount: " );
 
          int input = keypad.getInput(); // get user input through keypad
-
+         int Input=input;
+         if(Input%100!=0){
+            Input=2;
+         }
+         else{Input=1;
+         }
          // determine how to proceed based on the input value
-         switch ( input )
+         switch ( Input )
          {
             case 1: // if the user chose a withdrawal amount 
-            case 2: // (i.e., chose option 1, 2, 3, 4 or 5), return the
-            case 3: // corresponding amount from amounts array
-               userChoice = amounts[ input ]; // save user's choice
+               userChoice = input; // save user's choice
                break;       
             case CANCELED: // the user chose to cancel
                userChoice = CANCELED; // save user's choice
