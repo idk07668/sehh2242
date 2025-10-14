@@ -106,15 +106,21 @@ public class Withdrawal extends Transaction
          if(Input%100!=0){
             Input=2;
          }
-         else{Input=1;
+         else if(Input<=0){
+            Input=CANCELED;
+         }
+         else{
+            Input=1;
          }
          // determine how to proceed based on the input value
          switch ( Input )
          {
             case 1: // if the user chose a withdrawal amount 
                userChoice = input; // save user's choice
+               break; 
+               case 2: // if the user chose a withdrawal amount 
                break;       
-            case CANCELED: // the user chose to cancel
+               case CANCELED: // the user chose to cancel
                userChoice = CANCELED; // save user's choice
                break;
             default: // the user did not enter a value from 1-6
