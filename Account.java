@@ -5,8 +5,8 @@ public class Account
 {
    private int accountNumber; // account number
    private int pin; // PIN for authentication
-   private double availableBalance; // funds available for withdrawal
-   private double totalBalance; // funds available + pending deposits
+   protected  double availableBalance; // funds available for withdrawal
+   protected  double totalBalance; // funds available + pending deposits
 
    // Account constructor initializes attributes
    public Account( int theAccountNumber, int thePIN, 
@@ -58,7 +58,29 @@ public class Account
       return accountNumber;  
    } // end method getAccountNumber
 } // end class Account
+class ChequeAccount extends Account {
+    private double chequeLimit; 
+    public ChequeAccount(int accountNumber, int pin, double availableBalance, 
+                         double totalBalance) {
+        super(accountNumber, pin, availableBalance, totalBalance);
+        chequeLimit = 50000;
+    }
+    public void debit(double amount){
+    super.totalBalance = totalBalance - amount;
+    System.out.println("get out " + amount + " new totalBalance is " + super.totalBalance);
+    }
+    
+    public void writeCheque(double amount) {
+        if (amount > chequeLimit) {
+            System.out.println("cannot");
+        } else if (amount > availableBalance) {
+            System.out.println("cannot");
+        } else {
+            debit(amount);
 
+        }
+    }
+}
 
 /**************************************************************************
  * (C) Copyright 1992-2007 by Deitel & Associates, Inc. and               *
