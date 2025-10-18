@@ -3,7 +3,9 @@
 
 public class BankDatabase
 {
-   private Account accounts[]; // array of Accounts
+   private final Account accounts[]; // array of Accounts
+    boolean Accountexists;
+    boolean Accountexistsccountexists;
    
    // no-argument BankDatabase constructor initializes accounts
    public BankDatabase()
@@ -26,6 +28,10 @@ public class BankDatabase
 
       return null; // if no matching account was found, return null
    } // end method getAccount
+   // NEW: check whether an account exists for Transfer.jave
+   public boolean accountExists(int accountNumber) {
+      return getAccount(accountNumber) != null;
+   }
 
    // determine whether user-specified account number and PIN match
    // those of an account in the database

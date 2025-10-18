@@ -12,6 +12,7 @@ public class ATM
    // constants corresponding to main menu options
    private static final int BALANCE_INQUIRY = 1;
    private static final int WITHDRAWAL = 2;
+   private static final int TRANSFER = 3;
    private static final int EXIT = 4;
 
    // no-argument ATM constructor initializes instance variables
@@ -87,6 +88,7 @@ public class ATM
             // user chose to perform one of three transaction types
             case BALANCE_INQUIRY: 
             case WITHDRAWAL: 
+            case TRANSFER:
                // initialize as new object of chosen type
                currentTransaction = 
                   createTransaction( mainMenuSelection );
@@ -111,6 +113,7 @@ public class ATM
       screen.displayMessageLine( "\nMain menu:" );
       screen.displayMessageLine( "1 - View my balance" );
       screen.displayMessageLine( "2 - Withdraw cash" );
+      screen.displayMessageLine( "3 - Transfer" );
       screen.displayMessageLine( "4 - Exit\n" );
       screen.displayMessage( "Enter a choice: " );
       return keypad.getInput(); // return user's selection
@@ -132,6 +135,9 @@ public class ATM
             temp = new Withdrawal( currentAccountNumber, screen, 
                bankDatabase, keypad, cashDispenser );
             break; 
+         case TRANSFER: // create new Transfer transaction
+            temp = new Transfer(currentAccountNumber, screen, bankDatabase, keypad);
+            break;
       } // end switch
 
       return temp; // return the newly created object
