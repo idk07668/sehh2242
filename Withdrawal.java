@@ -132,7 +132,6 @@ public class Withdrawal extends Transaction
                   "\nIvalid selection. Try again." );
          } // end switch
       } // end while
-
       return userChoice; // return withdrawal amount or CANCELED
    } // end method displayMenuOfAmounts
 } // end class Withdrawal

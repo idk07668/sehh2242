@@ -1,22 +1,18 @@
 class ChequeAccount extends Account {
     private double chequeLimit; 
-    public ChequeAccount(int accountNumber, int pin, double availableBalance, double totalBalance) {
-    super(accountNumber, pin, availableBalance, totalBalance, null);
+    public ChequeAccount(int accountNumber, int pin, double availableBalance, 
+                         double totalBalance) {
+        super(accountNumber, pin, availableBalance, totalBalance,"CHEQUE");
         chequeLimit = 50000;
     }
-    public void debit(double amount){
-    super.totalBalance = totalBalance - amount;
-    System.out.println("get out " + amount + " new totalBalance is " + super.totalBalance);
-    }
+    public double getChequeLimit(){
     
-    public void writeCheque(double amount) {
-        if (amount > chequeLimit) {
-            System.out.println("cannot");
-        } else if (amount > availableBalance) {
-            System.out.println("cannot");
-        } else {
-            debit(amount);
-
-        }
+    return chequeLimit;
+    
+    }
+    public void setChequeLimit(double limit){
+    
+    chequeLimit = limit;
+    
     }
 }
