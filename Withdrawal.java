@@ -98,11 +98,14 @@ public class Withdrawal extends Transaction
          screen.displayMessageLine( "$100" );
          screen.displayMessageLine( "$500" );
          screen.displayMessageLine( "$1000" );
+         screen.displayMessageLine( "press 2,4,6,10 to be $200,400,600,1000" );
          screen.displayMessageLine( "press 0 to exit" );
          screen.displayMessage( "\nChoose a withdrawal amount: " );
-
          int input = keypad.getInput(); // get user input through keypad
          int Input=input;
+         if(input==2||input==4||input==6||input==10){
+            input=input*100;
+         }
          if(Input%100!=0){
             Input=2;
          }
