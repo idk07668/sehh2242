@@ -105,6 +105,7 @@ public class Withdrawal extends Transaction
          int Input=input;
          if(input==2||input==4||input==6||input==10){
             input=input*100;
+            Input=input;
          }
          if(Input%100!=0){
             Input=2;
