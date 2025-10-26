@@ -123,11 +123,12 @@ public class Withdrawal extends Transaction
                userChoice = input; // save user's choice
                break; 
                case 2: // if the user chose a withdrawal amount 
+               System.out.println("\nInvalid selection. Try again.");
                break;       
                case CANCELED: // the user chose to cancel
                userChoice = CANCELED; // save user's choice
                break;
-            default: // the user did not enter a value from 1-6
+            default: // the user enter invalid value
                screen.displayMessageLine( 
                   "\nIvalid selection. Try again." );
          } // end switch
