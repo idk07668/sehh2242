@@ -10,9 +10,11 @@ public class BankDatabase
    // no-argument BankDatabase constructor initializes accounts
    public BankDatabase()
    {
-      accounts = new Account[ 2 ]; // just 2 accounts for testing
+      accounts = new Account[ 4 ]; // just 2 accounts for testing
       accounts[ 0 ] = new Account( 12345, 54321, 1000.0, 1200.0 ,"Cheque");
       accounts[ 1 ] = new Account( 98765, 56789, 200.0, 200.0 ,"Savings");  
+      accounts[ 0 ] = new Account( 11111, 11111, 100000000000.0, 120000000000.0 ,"Cheque");
+      accounts[ 1 ] = new Account( 22222, 22222, 123456789, 200000000.0 ,"Savings");
    } // end no-argument BankDatabase constructor
    
    // retrieve Account object containing specified account number
