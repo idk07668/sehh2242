@@ -11,10 +11,10 @@ public class BankDatabase
    public BankDatabase()
    {
       accounts = new Account[ 4 ]; // just 2 accounts for testing
-      accounts[ 0 ] = new Account( 12345, 54321, 1000.0, 1200.0 ,"Cheque");
-      accounts[ 1 ] = new Account( 98765, 56789, 200.0, 200.0 ,"Savings");  
-      accounts[ 2 ] = new Account( 11111, 11111, 100000000000.0, 120000000000.0 ,"Cheque");
-      accounts[ 3] = new Account( 22222, 22222, 123456789, 200000000.0 ,"Savings");
+      accounts[ 0 ] = new ChequeAccount( 12345, 54321, 1000.0, 1200.0 );
+      accounts[ 1 ] = new ChequeAccount( 98765, 56789, 200.0, 200.0 );  
+      accounts[ 2 ] = new SavingAccount( 11111, 11111, 100000000000.0, 120000000000.0 );
+      accounts[ 3] = new SavingAccount( 22222, 22222, 123456789, 200000000.0 );
    } // end no-argument BankDatabase constructor
    
    // retrieve Account object containing specified account number
