@@ -4,8 +4,7 @@ import java.util.Scanner; // program uses Scanner to obtain user input
 
 public class Keypad
 {
-   private Scanner input; // reads data from the command line
-                         
+   private Scanner input; // reads data from the command line                  
    // no-argument constructor initializes the Scanner
    public Keypad()
    {
@@ -17,6 +16,10 @@ public class Keypad
    {
       return input.nextInt(); // we assume that user enters an integer  
    } // end method getInput
+   public double getInputDouble()
+   {
+      return input.nextDouble(); // we assume that user enters a double  
+   } // end method getInputDouble
 } // end class Keypad  
 
 

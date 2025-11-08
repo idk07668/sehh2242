@@ -30,7 +30,7 @@ public class Transfer extends Transaction {
       continue;
      }
      screen.displayMessage ("Enter transfer amount in HKD , or 0 to cancel :");     // Prompt the user to input the transfer amount
-     int inputAmount = keypad.getInput();
+     float inputAmount = (float) keypad.getInputDouble();
      if(inputAmount == CANCELED) {            // Check if the user chose to cancel the transaction
          screen.displayMessageLine("\nCanceling transaction");
          return;
