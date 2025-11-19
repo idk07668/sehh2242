@@ -49,4 +49,9 @@ public class GuiController {
         cashDispenser.dispenseCash((int)amount);
         return "Withdrawal complete.";
     }
+
+    // helper: check whether an account exists (used by Login two-step flow)
+    public boolean accountExists(int accountNumber) {
+        return bankDatabase.accountExists(accountNumber);
+    }
 }

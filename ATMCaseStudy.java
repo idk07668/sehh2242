@@ -6,7 +6,14 @@ public class ATMCaseStudy
    // main method creates and runs the ATM
    public static void main( String[] args )
    {
-      ATM theATM = new ATM();    
+      // If started with argument "gui", launch the Swing GUI launcher.
+      if ( args != null && args.length > 0 && "gui".equalsIgnoreCase(args[0]) ) {
+         ATMGuiLauncher.main(args);
+         return;
+      }
+
+      // Default behavior: run the console ATM
+      ATM theATM = new ATM();
       theATM.run();
    } // end main
 } // end class ATMCaseStudy 
