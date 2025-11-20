@@ -6,15 +6,18 @@ public class ATMCaseStudy
    // main method creates and runs the ATM
    public static void main( String[] args )
    {
-      // If started with argument "gui", launch the Swing GUI launcher.
-      if ( args != null && args.length > 0 && "gui".equalsIgnoreCase(args[0]) ) {
-         ATMGuiLauncher.main(args);
-         return;
-      }
-
-      // Default behavior: run the console ATM
-      ATM theATM = new ATM();
-      theATM.run();
+      /* Launch GUI version of the ATM on the Swing Event Dispatch Thread */
+      javax.swing.SwingUtilities.invokeLater(new Runnable() {
+         public void run() {
+            // create model components used by GUI
+            BankDatabase db = new BankDatabase();
+            CashDispenser dispenser = new CashDispenser();
+            // controller wiring between GUI and model
+            GuiController controller = new GuiController(db, dispenser);
+            // create and show main application window
+            new MainFrame(controller);
+         }
+      });
    } // end main
 } // end class ATMCaseStudy 
 

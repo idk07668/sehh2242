@@ -12,6 +12,7 @@ public class LoginPanel extends JPanel {
 
     private CardLayout cards;
     private JPanel cardPanel;
+    private JLabel statusLabel;
 
     // components for account step
     private JTextField accountField;
@@ -25,9 +26,15 @@ public class LoginPanel extends JPanel {
     private int pendingAccount = -1;
 
     public LoginPanel(GuiController controller, MainFrame frame) {
+        this(controller, frame, "Welcome! Please insert your card and enter account number.");
+    }
+
+    // constructor with a custom status message (e.g., "Please eject your card")
+    public LoginPanel(GuiController controller, MainFrame frame, String statusMessage) {
         this.controller = controller;
         this.frame = frame;
         initComponents();
+        setStatus(statusMessage);
     }
 
     private void initComponents() {
@@ -38,7 +45,11 @@ public class LoginPanel extends JPanel {
         // --- Account panel ---
         JPanel accountPanel = new JPanel(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        c.insets = new Insets(4,4,4,4);
+        JPanel accountPanel1 = new JPanel(new GridBagLayout());
+        GridBagConstraints d = new GridBagConstraints();
+        d.insets = new Insets(30,30,30,30);
+        d.gridx = 0; d.gridy = 0; accountPanel1.add(new JLabel("Welcome!"), d);
+        c.insets = new Insets(30,30,30,30);
         c.gridx = 0; c.gridy = 0; accountPanel.add(new JLabel("Account ID:"), c);
         accountField = new JTextField(14);
         c.gridx = 1; accountPanel.add(accountField, c);
@@ -69,6 +80,10 @@ public class LoginPanel extends JPanel {
         cardPanel.add(accountPanel, "ACCOUNT");
         cardPanel.add(pinPanel, "PIN");
 
+        // status label above the cards
+        statusLabel = new JLabel(" ", SwingConstants.CENTER);
+        statusLabel.setBorder(BorderFactory.createEmptyBorder(6,6,6,6));
+        add(statusLabel, BorderLayout.NORTH);
         add(cardPanel, BorderLayout.CENTER);
 
         // actions
@@ -86,6 +101,7 @@ public class LoginPanel extends JPanel {
                 return;
             }
             pendingAccount = acc;
+            setStatus("Account found. Please enter PIN or press Back to change account.");
             // move to PIN card
             cards.show(cardPanel, "PIN");
             pinField.requestFocusInWindow();
@@ -106,9 +122,14 @@ public class LoginPanel extends JPanel {
             } else {
                 JOptionPane.showMessageDialog(this, "Invalid PIN.", "Login Failed", JOptionPane.ERROR_MESSAGE);
                 pinField.setText("");
+                setStatus("Invalid PIN. Please try again.");
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Please enter numeric PIN.", "Input Error", JOptionPane.WARNING_MESSAGE);
         }
+    }
+
+    private void setStatus(String message) {
+        if (statusLabel != null) statusLabel.setText(message);
     }
 }
